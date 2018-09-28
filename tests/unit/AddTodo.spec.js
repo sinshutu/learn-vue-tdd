@@ -17,4 +17,11 @@ describe("AddTodo.vue", () => {
     // のような内容が入っている
     expect(wrapper.emitted("addTodo")[0][0]).toBe(text);
   });
+  it("emitされたときinputが空になる", () => {
+    const text = "todo";
+    const wrapper = shallowMount(AddTodo);
+    wrapper.setData({ text });
+    wrapper.find("input.add").trigger("keyup.enter");
+    expect(wrapper.vm.text).toBe("");
+  });
 });

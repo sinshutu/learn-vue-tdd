@@ -19,6 +19,7 @@ export default {
   methods: {
     submit() {
       this.$emit("addTodo", this.text);
+      this.text = "";
     }
   }
 };
