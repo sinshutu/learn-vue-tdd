@@ -25,7 +25,7 @@ describe("TodoItem.vue", () => {
         checked: false
       }
     });
-    wrapper.find("input[type='radio']").trigger("click");
+    wrapper.find("input[type='checkbox']").trigger("click");
     expect(wrapper.emitted("toggleChecked")[0][0]).toBe(id);
   });
 });

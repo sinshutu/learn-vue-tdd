@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="radio" :checked="checked" @click="toggleChecked">
+    <input type="checkbox" :checked="checked" @click="toggleChecked">
     <span class="item">
       {{ text }}
     </span>
