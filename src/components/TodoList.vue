@@ -1,16 +1,25 @@
 <template>
   <div>
-    <AddTodo />
+    <AddTodo
+      @addTodo="addTodo" />
+    <TodoItem
+      v-for="todo in todos"
+      :id="todo.id"
+      :text="todo.text"
+      :checked="todo.checked"
+      :key="todo.id" />
   </div>
 </template>
 
 <script>
 import AddTodo from "@/components/AddTodo.vue";
+import TodoItem from "@/components/TodoItem.vue";
 
 export default {
   name: "TodoList",
   components: {
-    AddTodo
+    AddTodo,
+    TodoItem
   },
   data() {
     return {
