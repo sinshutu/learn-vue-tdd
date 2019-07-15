@@ -1,13 +1,13 @@
 <template>
   <div>
-    <AddTodo
-      @addTodo="addTodo" />
+    <AddTodo @addTodo="addTodo" />
     <TodoItem
       v-for="todo in todos"
       :id="todo.id"
       :text="todo.text"
       :checked="todo.checked"
-      :key="todo.id" />
+      :key="todo.id"
+    />
   </div>
 </template>
 

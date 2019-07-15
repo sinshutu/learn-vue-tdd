@@ -1,10 +1,6 @@
 <template>
   <div>
-    <input
-      class="add"
-      v-model="text"
-      @keyup.enter="submit"
-    />
+    <input class="add" v-model="text" @keyup.enter="submit" />
   </div>
 </template>
 
