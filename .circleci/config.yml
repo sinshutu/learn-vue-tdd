@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cypress/base:10
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: lint
+          command: yarn lint
+      - run:
+          name: unit test
+          command: yarn test:unit
+          environment:
+            - JEST_JUNIT_OUTPUT_DIR: ~/test-results/unit
+      - run:
+          name: e2e test
+          command: yarn test:e2e --headless --reporter junit --reporter-options "mochaFile=~/test-results/output.xml"
+      - store_test_results:
+          path: ~/test-results
+      - run: yarn build
